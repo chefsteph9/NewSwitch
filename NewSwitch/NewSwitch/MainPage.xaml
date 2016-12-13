@@ -31,7 +31,7 @@
         </StackLayout>
 
         <Label x:Name="label"
-               Text="Just a little passage of some sample text that can be formatted in italic or boldface by toggling the two custom CheckBox views."
+               Text="Just a little passage of some sample text that can be formatted in italic or boldface by toggling the two switch views."
                FontSize="Large"
                VerticalOptions="CenterAndExpand">
             <Label.HorizontalTextAlignment>
