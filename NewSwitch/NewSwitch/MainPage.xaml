@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NewSwitch"
+             x:Class="NewSwitch.MainPage">
+
+    <StackLayout Padding="10, 0">
+        <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="CenterAndExpand">
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Italic"
+                       TextColor="Aqua"
+                       FontSize="Large"
+                       FontAttributes="Italic" />
+                <Switch Toggled="OnItalicCheckBoxChanged" HorizontalOptions="End"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Boldface"
+                       FontSize="Large"
+                       TextColor="Green"
+                       FontAttributes="Bold" />
+                <Switch Toggled="OnBoldCheckBoxChanged" HorizontalOptions="End"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Center Text" VerticalOptions="Center"/>
+                <Switch x:Name="centerCheckBox" />
+            </StackLayout>
+        </StackLayout>
+
+        <Label x:Name="label"
+               Text="Just a little passage of some sample text that can be formatted in italic or boldface by toggling the two custom CheckBox views."
+               FontSize="Large"
+               VerticalOptions="CenterAndExpand">
+            <Label.HorizontalTextAlignment>
+                <Binding Source="{x:Reference centerCheckBox}"
+                         Path="IsToggled">
+                    <Binding.Converter>
+                        <local:BoolToObjectConverter x:TypeArguments="TextAlignment"
+                                                       TrueObject="Center"
+                                                       FalseObject="Start" />
+                    </Binding.Converter>
+                </Binding>
+            </Label.HorizontalTextAlignment>
+        </Label>
+    </StackLayout>
+
+</ContentPage>
